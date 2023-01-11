@@ -10,15 +10,25 @@ import javax.imageio.ImageIO;
 import javax.security.auth.login.LoginException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.regex.Pattern;
 
 public class Main extends ListenerAdapter {
     final String prefix = "!";
     public static void main(String[] args) throws LoginException {
+        BufferedReader reader;
+        String api;
         Message.suppressContentIntentWarning();
-        final String api = "MTAxNjg4NDM1ODA1NDkzNjY1Ng.G3kAxJ.S4S-_8-I0_xoBPBsXHlMZHoRG6LRRmjLpEhzGA";
+        try {
+            reader = new BufferedReader(new FileReader("src/main/resources/api.txt"));
+            api = reader.readLine();
+        } catch (FileNotFoundException e) {
+            reader=null;
+            api=null;
+        } catch (IOException e) {
+            api=null;
+        }
+
         JDABuilder builder = JDABuilder.createDefault(api);
         builder.addEventListeners(new Main());
         builder.build();
