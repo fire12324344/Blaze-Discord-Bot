@@ -1,2 +1,6 @@
+BlazeHatter.java
+ BlazeHatter
 Main.java
  Main
+DevBadge.java
+ DevBadge
