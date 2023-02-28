@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.FileUpload;
 
@@ -31,10 +32,10 @@ public class Main extends ListenerAdapter {
         }
 
         JDABuilder builder = JDABuilder.createDefault(api);
-        builder.addEventListeners(new Main());
+        builder.addEventListeners(new Main(), new DevBadge());
         builder.enableIntents(GatewayIntent.MESSAGE_CONTENT);
         JDA jda = builder.build();
-        jda.upsertCommand("devbadge", "Free Dev Badge (Real)");
+
     }
 
     @Override
